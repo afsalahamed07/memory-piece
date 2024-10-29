@@ -12,6 +12,14 @@
         font-display: swap;
         src: url(assets/NineTsuki.otf) format("otf");
     }
+
+    @font-face {
+        font-family: "River Adventurer";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(assets/River.ttf) format("ttf");
+    }
 }
 
 body {

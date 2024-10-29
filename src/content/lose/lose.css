@@ -1,0 +1,7 @@
+.lose {
+    @apply basis-8/12 flex flex-col justify-center;
+
+    .quote {
+        @apply text-7xl font-river text-gray-100 text-center tracking-widest;
+    }
+}

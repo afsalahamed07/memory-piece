@@ -2,6 +2,7 @@ import "./content.css";
 import Card from "./card/Card";
 import { characters } from "../infra/characters-list-util";
 import { useState } from "react";
+import LoseScreen from "./lose/LoseScreen";
 
 function shuffleAndSlice(array) {
   let coppyArr = [...array];
@@ -16,10 +17,18 @@ function shuffleAndSlice(array) {
 
 function Content({ score, setScore }) {
   const [charactersState, setCharectersState] = useState(characters);
+  const [gameState, setGameState] = useState("active");
+
   if (score >= 12) return "";
 
+  if (gameState === "lost") {
+    if (score > localStorage.getItem("best")) {
+      localStorage.setItem("best", score);
+    }
+    return <LoseScreen />;
+  }
+
   return (
-    // the renderign should happend every time when a card is clicked
     <div className="content">
       {shuffleAndSlice(charactersState).map((character) => (
         <Card
@@ -30,6 +39,7 @@ function Content({ score, setScore }) {
           clicked={character.clicked}
           setCharacters={setCharectersState}
           setScore={setScore}
+          setGameState={setGameState}
         />
       ))}
     </div>

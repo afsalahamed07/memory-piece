@@ -5,6 +5,7 @@ export default {
     fontFamily: {
       dyna: ["DynaPuff"],
       tsuki: ["Nine Tsuki"],
+      river: ["River Adventurer"],
     },
     extend: {},
   },

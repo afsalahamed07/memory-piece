@@ -1,10 +1,23 @@
 import "./card.css";
 
-function Card({ id, name, img, clicked, setCharacters, setScore }) {
+function Card({
+  id,
+  name,
+  img,
+  clicked,
+  setCharacters,
+  setScore,
+  setGameState,
+}) {
   function handleClick() {
     if (!clicked) {
       setScore((prev) => prev + 1);
-    } else return;
+    } else {
+      // here the player loses the game
+      // this should trigger the render of game over screen
+      setGameState("lost");
+      return;
+    }
 
     setCharacters((prev) =>
       prev.map((character) =>

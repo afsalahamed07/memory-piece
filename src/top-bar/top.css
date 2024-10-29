@@ -4,11 +4,11 @@
 }
 
 .score {
-    @apply flex gap-4 items-center font-dyna font-bold text-3xl tracking-wide;
+    @apply flex flex-col p-4 font-river text-3xl tracking-wider;
 }
 
 .title {
-    @apply font-tsuki flex items-center gap-3 text-7xl tracking-wide
+    @apply font-river flex items-center gap-3 text-5xl tracking-widest
     transition ease-in-out duration-300;
 
     h1 {

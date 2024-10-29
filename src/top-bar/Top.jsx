@@ -2,6 +2,11 @@ import "./top.css";
 import logo from "../assets/logo.png";
 
 function Top({ score }) {
+  let bestScore = 0;
+  if (localStorage.getItem("best")) {
+    bestScore = localStorage.getItem("best");
+  }
+
   return (
     <div className="top-container">
       <div className="title">
@@ -11,7 +16,7 @@ function Top({ score }) {
       </div>
       <div className="score">
         <p>Score: {score}</p>
-        <p>Best Score: 5</p>
+        <p>Best Score: {bestScore}</p>
       </div>
     </div>
   );
