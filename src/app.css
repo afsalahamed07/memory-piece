@@ -1,0 +1,3 @@
+.app {
+    @apply container h-dvh mx-auto flex flex-col;
+}

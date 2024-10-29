@@ -1,0 +1,16 @@
+.card {
+    @apply flex flex-col items-center w-56 p-2 bg-white shadow-lg rounded-2xl
+    transition ease-in-out duration-300;
+
+    img {
+        @apply w-full h-72 object-cover rounded-2xl;
+    }
+
+    p {
+        @apply font-dyna font-semibold text-xl pt-2;
+    }
+}
+
+.card:hover {
+    @apply cursor-pointer scale-110;
+}
