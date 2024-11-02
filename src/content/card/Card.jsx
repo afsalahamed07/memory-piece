@@ -30,35 +30,27 @@ function Card({
 
   return (
     <motion.div
-      initial={{ rotatey: 0 }}
+      initial={{ rotateY: 180 }}
+      animate={{ rotateY: 0 }}
       transition={{ duration: 0.7, delay: 0.5 }}
-      animate={{ rotatey: 180 }}
       onClick={handleClick}
+      className="card"
     >
+      <motion.div
+        initial={{ rotateY: 180 }}
+        animate={{ rotateY: 0 }}
+        transition={{ duration: 0.7, delay: 0.5 }}
+        className="front"
+      >
+        <img src={img} />
+        <p>{name}</p>
+      </motion.div>
       <motion.div
         initial={{ rotateY: 0 }}
         animate={{ rotateY: 180 }}
         transition={{ duration: 0.7, delay: 0.5 }}
-        className="card"
-      >
-        <motion.div
-          initial={{ rotateY: 0 }}
-          animate={{ rotateY: 180 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="front"
-        >
-          <img src={img} />
-          <p>{name}</p>
-        </motion.div>
-        <motion.div
-          initial={{ rotateY: 0 }}
-          animate={{ rotateY: 180 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="back"
-        >
-          Back Side
-        </motion.div>
-      </motion.div>
+        className="back"
+      ></motion.div>
     </motion.div>
   );
 }

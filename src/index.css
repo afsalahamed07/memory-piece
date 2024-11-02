@@ -23,6 +23,6 @@
 }
 
 body {
-    @apply bg-[url('./assets/back-image.jpg')] bg-cover bg-center
+    @apply bg-[url('./assets/hero.gif')] bg-contain
     bg-black/50 bg-blend-overlay;
 }

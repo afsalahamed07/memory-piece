@@ -7,7 +7,11 @@ export default {
       tsuki: ["Nine Tsuki"],
       river: ["River Adventurer"],
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        texture: "url('src/assets/texture.png')",
+      },
+    },
   },
   plugins: [],
 };

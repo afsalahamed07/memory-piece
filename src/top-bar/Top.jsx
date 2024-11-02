@@ -10,7 +10,7 @@ function Top({ score }) {
   return (
     <div className="top-container">
       <div className="title">
-        <h1>Peice</h1>
+        <h1>Piece</h1>
         <img src={logo} />
         <h1>Memory</h1>
       </div>

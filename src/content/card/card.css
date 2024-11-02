@@ -1,10 +1,12 @@
 .card {
-    @apply flex flex-col items-center w-60 p-2 bg-white shadow-xl rounded-2xl
+    @apply flex flex-col items-center w-60 p-2 shadow-xl rounded-2xl
     bg-texture bg-left-bottom bg-black/40 bg-blend-overlay
     hover:cursor-pointer;
 }
 
 .front {
+    @apply flex flex-col items-center;
+
     img {
         @apply w-full h-72 object-cover rounded-2xl;
     }
