@@ -13,17 +13,26 @@ function Card({
   flipping,
   setFlipping,
 }) {
+  const click = new Audio("src/assets/click.wav");
+  const flip = new Audio("src/assets/flip.mp3");
+
   function handleClick() {
+    click.play();
+
+    if (clicked) {
+      // here the player loses the game
+      // this should trigger the render of game over screen
+      setGameState("lost");
+      return;
+    }
+
     setFlipping((prev) => !prev);
+    flip.play();
+
     setTimeout(() => {
       setFlipping((prev) => !prev);
       if (!clicked) {
         setScore((prev) => prev + 1);
-      } else {
-        // here the player loses the game
-        // this should trigger the render of game over screen
-        setGameState("lost");
-        return;
       }
       setCharacters((prev) =>
         prev.map((character) =>
