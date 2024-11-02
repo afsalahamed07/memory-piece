@@ -1,6 +1,6 @@
 .card {
     @apply flex flex-col items-center w-60 p-2 shadow-xl rounded-2xl
-    bg-texture bg-left-bottom bg-black/40 bg-blend-overlay
+    bg-left-bottom bg-black/40 bg-blend-overlay
     hover:cursor-pointer;
 }
 

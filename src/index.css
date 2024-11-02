@@ -26,3 +26,7 @@ body {
     @apply bg-[url('./assets/hero.gif')] bg-contain
     bg-black/50 bg-blend-overlay;
 }
+
+.card {
+    @apply bg-[url('./assets/texture.png')];
+}
