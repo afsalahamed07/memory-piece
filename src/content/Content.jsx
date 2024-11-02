@@ -20,6 +20,7 @@ function Content({ score, setScore }) {
   const [charactersState, setCharectersState] = useState(characters);
   const [gameState, setGameState] = useState("active");
   const scoreLim = characters.length;
+  const [flipping, setFlipping] = useState(false);
 
   if (score >= scoreLim) {
     localStorage.setItem("best", scoreLim);
@@ -65,6 +66,8 @@ function Content({ score, setScore }) {
             setCharacters={setCharectersState}
             setScore={setScore}
             setGameState={setGameState}
+            flipping={flipping}
+            setFlipping={setFlipping}
           />
         </Tilt>
       ))}

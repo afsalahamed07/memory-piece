@@ -10,11 +10,13 @@ function Card({
   setCharacters,
   setScore,
   setGameState,
+  flipping,
+  setFlipping,
 }) {
   function handleClick() {
-    setFlip((prev) => !prev);
-    setTimeout(() => setFlip((prev) => !prev), 1000);
+    setFlipping((prev) => !prev);
     setTimeout(() => {
+      setFlipping((prev) => !prev);
       if (!clicked) {
         setScore((prev) => prev + 1);
       } else {
@@ -28,30 +30,28 @@ function Card({
           character.id === id ? { ...character, clicked: true } : character,
         ),
       );
-    }, 2000);
+    }, 800);
   }
-
-  const [flip, setFlip] = useState(true);
 
   return (
     <motion.div
-      animate={{ rotateY: flip ? 0 : 180 }}
-      transition={{ duration: 0.7 }}
+      animate={{ rotateY: flipping ? 180 : 0 }}
       onClick={handleClick}
+      transition={{ duration: 0.2 }}
       className="card"
     >
       <motion.div
-        animate={{ rotateY: flip ? 0 : 180 }}
-        transition={{ duration: 0.75 }}
+        animate={{ rotateY: flipping ? 180 : 0 }}
+        transition={{ duration: 0.2 }}
         className="front"
       >
         <img src={img} />
         <p>{name}</p>
       </motion.div>
       <motion.div
-        initial={{ rotateY: 180 }}
-        animate={{ rotateY: flip ? 180 : 0 }}
-        transition={{ duration: 0.7 }}
+        initial={{ rotateY: 0 }}
+        animate={{ rotateY: flipping ? 0 : 180 }}
+        transition={{ duration: 0.2 }}
         className="back"
       ></motion.div>
     </motion.div>
