@@ -3,6 +3,7 @@ import Card from "./card/Card";
 import { characters } from "../infra/characters-list-util";
 import { useState } from "react";
 import LoseScreen from "./lose/LoseScreen";
+import Tilt from "react-parallax-tilt";
 
 function shuffleAndSlice(array) {
   let coppyArr = [...array];
@@ -18,29 +19,54 @@ function shuffleAndSlice(array) {
 function Content({ score, setScore }) {
   const [charactersState, setCharectersState] = useState(characters);
   const [gameState, setGameState] = useState("active");
+  const scoreLim = characters.length;
 
-  if (score >= 12) return "";
+  if (score >= scoreLim) {
+    localStorage.setItem("best", scoreLim);
+    return (
+      <LoseScreen
+        text="You Won"
+        setCharectersState={setCharectersState}
+        setGameState={setGameState}
+        setScore={setScore}
+      />
+    );
+  }
 
   if (gameState === "lost") {
     if (score > localStorage.getItem("best")) {
       localStorage.setItem("best", score);
     }
-    return <LoseScreen />;
+    return (
+      <LoseScreen
+        setCharectersState={setCharectersState}
+        setGameState={setGameState}
+        setScore={setScore}
+      />
+    );
   }
 
   return (
     <div className="content">
       {shuffleAndSlice(charactersState).map((character) => (
-        <Card
+        <Tilt
           key={character.id}
-          id={character.id}
-          name={character.name}
-          img={character.image}
-          clicked={character.clicked}
-          setCharacters={setCharectersState}
-          setScore={setScore}
-          setGameState={setGameState}
-        />
+          glareEnable={true}
+          scale={1.1}
+          transitionSpeed={1500}
+          glareBorderRadius="1rem"
+        >
+          <Card
+            key={character.id}
+            id={character.id}
+            name={character.name}
+            img={character.image}
+            clicked={character.clicked}
+            setCharacters={setCharectersState}
+            setScore={setScore}
+            setGameState={setGameState}
+          />
+        </Tilt>
       ))}
     </div>
   );
