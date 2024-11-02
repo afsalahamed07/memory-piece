@@ -1,6 +1,8 @@
 import "./card.css";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import clickSound from "../../assets/click.wav";
+import flipSound from "../../assets/flip.mp3";
 
 function Card({
   id,
@@ -13,8 +15,8 @@ function Card({
   flipping,
   setFlipping,
 }) {
-  const click = new Audio("src/assets/click.wav");
-  const flip = new Audio("src/assets/flip.mp3");
+  const click = new Audio(clickSound);
+  const flip = new Audio(flipSound);
   const transDur = 0.4;
 
   function handleClick() {
