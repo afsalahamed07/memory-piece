@@ -48,29 +48,36 @@ function Content({ score, setScore }) {
   }
 
   return (
-    <div className="content">
-      {shuffleAndSlice(charactersState).map((character) => (
-        <Tilt
-          key={character.id}
-          glareEnable={true}
-          scale={1.1}
-          transitionSpeed={1500}
-          glareBorderRadius="1rem"
-        >
-          <Card
+    <div className="parent-content">
+      <div className="content">
+        {shuffleAndSlice(charactersState).map((character) => (
+          <Tilt
             key={character.id}
-            id={character.id}
-            name={character.name}
-            img={character.image}
-            clicked={character.clicked}
-            setCharacters={setCharectersState}
-            setScore={setScore}
-            setGameState={setGameState}
-            flipping={flipping}
-            setFlipping={setFlipping}
-          />
-        </Tilt>
-      ))}
+            glareEnable={true}
+            scale={1.1}
+            transitionSpeed={1500}
+            glareBorderRadius="1rem"
+          >
+            <Card
+              key={character.id}
+              id={character.id}
+              name={character.name}
+              img={character.image}
+              clicked={character.clicked}
+              setCharacters={setCharectersState}
+              setScore={setScore}
+              setGameState={setGameState}
+              flipping={flipping}
+              setFlipping={setFlipping}
+            />
+          </Tilt>
+        ))}
+      </div>
+      <div className="live-score">
+        <p>
+          {score} / {scoreLim}
+        </p>
+      </div>
     </div>
   );
 }
