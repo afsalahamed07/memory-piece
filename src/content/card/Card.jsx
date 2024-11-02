@@ -15,6 +15,7 @@ function Card({
 }) {
   const click = new Audio("src/assets/click.wav");
   const flip = new Audio("src/assets/flip.mp3");
+  const transDur = 0.4;
 
   function handleClick() {
     click.play();
@@ -46,12 +47,12 @@ function Card({
     <motion.div
       animate={{ rotateY: flipping ? 180 : 0 }}
       onClick={handleClick}
-      transition={{ duration: 0.2 }}
+      transition={{ duration: transDur }}
       className="card"
     >
       <motion.div
         animate={{ rotateY: flipping ? 180 : 0 }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: transDur }}
         className="front"
       >
         <img src={img} />
@@ -60,7 +61,7 @@ function Card({
       <motion.div
         initial={{ rotateY: 0 }}
         animate={{ rotateY: flipping ? 0 : 180 }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: transDur }}
         className="back"
       ></motion.div>
     </motion.div>
