@@ -1,6 +1,5 @@
 import "./content.css";
 import Card from "./card/Card";
-import { characters } from "../infra/characters-list-util";
 import { useEffect, useState } from "react";
 import LoseScreen from "./lose/LoseScreen";
 import Tilt from "react-parallax-tilt";
@@ -16,10 +15,15 @@ function shuffleAndSlice(array) {
   return slicedArray;
 }
 
-function Content({ score, setScore }) {
-  const [charactersState, setCharectersState] = useState(characters);
+function Content({
+  score,
+  setScore,
+  setLoading,
+  charactersState,
+  setCharectersState,
+}) {
   const [gameState, setGameState] = useState("active");
-  const scoreLim = characters.length;
+  const scoreLim = charactersState.length;
   const [flipping, setFlipping] = useState(false);
 
   if (score >= scoreLim) {
@@ -62,7 +66,7 @@ function Content({ score, setScore }) {
               key={character.id}
               id={character.id}
               name={character.name}
-              img={character.image}
+              img={character.img.src}
               clicked={character.clicked}
               setCharacters={setCharectersState}
               setScore={setScore}
