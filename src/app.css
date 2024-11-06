@@ -1,3 +1,8 @@
 .app {
-    @apply container h-dvh mx-auto flex flex-col;
+    @apply container h-dvh mx-auto flex flex-col content-center justify-center;
+}
+
+.loading-screen {
+    @apply font-tsuki text-4xl font-semibold text-gray-200 text-center tracking-wider
+    flex flex-col content-center justify-center;
 }

@@ -10,7 +10,6 @@ function App() {
   const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(false);
   const [charactersState, setCharectersState] = useState([]);
-  console.log(loading);
 
   useEffect(() => {
     setLoading(true);
