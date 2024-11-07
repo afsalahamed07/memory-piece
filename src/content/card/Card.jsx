@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import clickSound from "../../assets/click.wav";
 import flipSound from "../../assets/flip.mp3";
+import PropTypes from "prop-types";
 
 function Card({
   id,
@@ -69,5 +70,17 @@ function Card({
     </motion.div>
   );
 }
+
+Card.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  img: PropTypes.string,
+  clicked: PropTypes.bool,
+  setCharacters: PropTypes.func,
+  setScore: PropTypes.func,
+  setGameState: PropTypes.func,
+  flipping: PropTypes.bool,
+  setFlipping: PropTypes.func,
+};
 
 export default Card;

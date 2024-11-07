@@ -3,6 +3,7 @@ import Card from "./card/Card";
 import { useEffect, useState } from "react";
 import LoseScreen from "./lose/LoseScreen";
 import Tilt from "react-parallax-tilt";
+import PropTypes from "prop-types";
 
 function shuffleAndSlice(array) {
   let coppyArr = [...array];
@@ -85,5 +86,13 @@ function Content({
     </div>
   );
 }
+
+Content.propTypes = {
+  score: PropTypes.number,
+  setScore: PropTypes.func,
+  setLoading: PropTypes.func,
+  charactersState: PropTypes.array, // using arrayOf is good. lazy me. ts helps.
+  setCharectersState: PropTypes.func,
+};
 
 export default Content;
