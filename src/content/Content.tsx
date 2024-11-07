@@ -1,10 +1,11 @@
 import "./content.css";
 import Card from "./card/Card";
-import { useState } from "react";
+import React, { useState } from "react";
 import LoseScreen from "./lose/LoseScreen";
 import Tilt from "react-parallax-tilt";
+import { Character } from "../Character";
 
-function shuffleAndSlice(array) {
+function shuffleAndSlice(array: Character[]) {
   let coppyArr = [...array];
   let shuffledArray = coppyArr.sort(() => Math.random() - 0.5);
   let slicedArray = shuffledArray.slice(0, 4);
@@ -15,40 +16,43 @@ function shuffleAndSlice(array) {
   return slicedArray;
 }
 
-function Content({
+type ContentProps = {
+  score: number;
+  setScore: (score: number) => void;
+  charactersState: Character[];
+  setCharectersState: (callback: (prev: Character[]) => Character[]) => void;
+};
+
+const Content: React.FC<ContentProps> = ({
   score,
   setScore,
-  setLoading,
   charactersState,
   setCharectersState,
-}) {
-  const [gameState, setGameState] = useState("active");
+}) => {
+  const [gameState, setGameState] = useState<"lose" | "won" | "active">(
+    "active",
+  );
   const scoreLim = charactersState.length;
-  const [flipping, setFlipping] = useState(false);
+  const [flipping, setFlipping] = useState<boolean>(false);
+
+  function resetGame() {
+    setScore(0);
+    setGameState("active");
+    setCharectersState((prev) =>
+      prev.map((character) => ({ ...character, clicked: false })),
+    );
+  }
 
   if (score >= scoreLim) {
     localStorage.setItem("best", scoreLim);
-    return (
-      <LoseScreen
-        text="You Won"
-        setCharectersState={setCharectersState}
-        setGameState={setGameState}
-        setScore={setScore}
-      />
-    );
+    return <LoseScreen text="You Won" resetGame={resetGame} />;
   }
 
   if (gameState === "lost") {
     if (score > localStorage.getItem("best")) {
       localStorage.setItem("best", score);
     }
-    return (
-      <LoseScreen
-        setCharectersState={setCharectersState}
-        setGameState={setGameState}
-        setScore={setScore}
-      />
-    );
+    return <LoseScreen resetGame={resetGame} />;
   }
 
   return (
@@ -84,6 +88,6 @@ function Content({
       </div>
     </div>
   );
-}
+};
 
 export default Content;
