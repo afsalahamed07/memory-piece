@@ -1,11 +1,20 @@
+import React from "react";
+import { Character } from "../../Character";
 import "./lose.css";
 
-function LoseScreen({
+type LoseProp = {
+  text: string;
+  setCharectersState: (callback: (prev: Character[]) => Character[]) => void;
+  setGameState: (state: "active" | "lose" | "win") => void;
+  setScore: (score: number) => void;
+};
+
+const LoseScreen: React.FC<LoseProp> = ({
   text = "You Lost",
   setCharectersState,
   setGameState,
   setScore,
-}) {
+}) => {
   function handleClick() {
     console.log("getting triggerd");
     setGameState("active");
@@ -22,6 +31,6 @@ function LoseScreen({
       <button onClick={handleClick}> Play Again</button>
     </div>
   );
-}
+};
 
 export default LoseScreen;

@@ -1,6 +1,6 @@
 import "./card.css";
 import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import clickSound from "../../assets/click.wav";
 import flipSound from "../../assets/flip.mp3";
 import { Character } from "../../Character";

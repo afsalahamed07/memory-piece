@@ -1,6 +1,6 @@
 import "./content.css";
 import Card from "./card/Card";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import LoseScreen from "./lose/LoseScreen";
 import Tilt from "react-parallax-tilt";
 
