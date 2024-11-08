@@ -11,7 +11,7 @@ type CardProps = {
   img: string;
   clicked: boolean;
   setCharacters: (callback: (prev: Character[]) => Character[]) => void;
-  setScore: (callback: (score: number) => number) => void;
+  incrementScore: () => void;
   setGameState: (state: "lost" | "active" | "won") => void;
   flipping: boolean;
   setFlipping: (callback: (prev: boolean) => boolean) => void;
@@ -23,7 +23,7 @@ const Card: React.FC<CardProps> = ({
   img,
   clicked,
   setCharacters,
-  setScore,
+  incrementScore,
   setGameState,
   flipping,
   setFlipping,
@@ -48,7 +48,7 @@ const Card: React.FC<CardProps> = ({
     setTimeout(() => {
       setFlipping((prev) => !prev);
       if (!clicked) {
-        setScore((prev) => prev + 1);
+        incrementScore();
       }
       setCharacters((prev) =>
         prev.map((character) =>

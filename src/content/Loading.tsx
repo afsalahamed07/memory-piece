@@ -1,11 +1,12 @@
-import "./app.css";
+import React from "react";
+import "../app.css";
 
-function Loading() {
+const Loading: React.FC = () => {
   return (
     <div className="loading-screen">
       <p> Loading... </p>
     </div>
   );
-}
+};
 
 export default Loading;

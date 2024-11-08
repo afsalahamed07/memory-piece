@@ -1,8 +1,8 @@
 type Character = {
-  id: string;
+  id: number;
   name: string;
-  img: string;
+  img: HTMLImageElement;
   clicked: boolean;
 };
 
-export { Character };
+export default Character;
