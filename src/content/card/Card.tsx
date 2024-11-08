@@ -1,20 +1,33 @@
 import "./card.css";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import React from "react";
 import clickSound from "../../assets/click.wav";
 import flipSound from "../../assets/flip.mp3";
+import { Character } from "../../Character";
 
-function Card({
+type CardProps = {
+  id: string;
+  name: string;
+  img: string;
+  clicked: boolean;
+  setCharacters: (callback: (prev: Character[]) => Character[]) => void;
+  incrementScore: () => void;
+  setGameState: (state: "lost" | "active" | "won") => void;
+  flipping: boolean;
+  setFlipping: (callback: (prev: boolean) => boolean) => void;
+};
+
+const Card: React.FC<CardProps> = ({
   id,
   name,
   img,
   clicked,
   setCharacters,
-  setScore,
+  incrementScore,
   setGameState,
   flipping,
   setFlipping,
-}) {
+}) => {
   const click = new Audio(clickSound);
   const flip = new Audio(flipSound);
   const transDur = 0.4;
@@ -35,7 +48,7 @@ function Card({
     setTimeout(() => {
       setFlipping((prev) => !prev);
       if (!clicked) {
-        setScore((prev) => prev + 1);
+        incrementScore();
       }
       setCharacters((prev) =>
         prev.map((character) =>
@@ -68,6 +81,6 @@ function Card({
       ></motion.div>
     </motion.div>
   );
-}
+};
 
 export default Card;
