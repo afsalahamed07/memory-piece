@@ -1,10 +1,15 @@
 import "./top.css";
 import logo from "../assets/logo.png";
+import React from "react";
 
-function Top({ score }) {
+type TopProps = {
+  score: number;
+};
+
+const Top: React.FC<TopProps> = ({ score }) => {
   let bestScore = 0;
   if (localStorage.getItem("best")) {
-    bestScore = localStorage.getItem("best");
+    bestScore = Number(localStorage.getItem("best"));
   }
 
   return (
@@ -20,6 +25,6 @@ function Top({ score }) {
       </div>
     </div>
   );
-}
+};
 
 export default Top;

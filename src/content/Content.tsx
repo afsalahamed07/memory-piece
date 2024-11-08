@@ -16,7 +16,7 @@ import Loading from "./Loading";
 
 type ContentProps = {
   score: number;
-  setScore: (score: number) => void;
+  setScore: (callable: (score: number) => number) => void;
 };
 
 const Content: React.FC<ContentProps> = ({ score, setScore }) => {
@@ -31,15 +31,29 @@ const Content: React.FC<ContentProps> = ({ score, setScore }) => {
   const [loading, setLoading] = useState<boolean>(false);
 
   function resetGame() {
-    setScore(0);
+    setScore((prev) => {
+      console.log(prev);
+      return 0;
+    });
     setGameState("active");
-    setCharactersState((prev) =>
-      prev.map((character) => ({ ...character, clicked: false })),
+    setCharactersState(
+      (prev) =>
+        prev && prev.map((character) => ({ ...character, clicked: false })),
     );
   }
 
   function incrementScore() {
     setScore((prev) => prev + 1);
+  }
+
+  function updateCharacter(id: number) {
+    setCharactersState(
+      (prev) =>
+        prev &&
+        prev.map((character) =>
+          character.id === id ? { ...character, clicked: true } : character,
+        ),
+    );
   }
 
   useEffect(() => {
@@ -90,7 +104,7 @@ const Content: React.FC<ContentProps> = ({ score, setScore }) => {
                 name={character.name}
                 img={character.img.src}
                 clicked={character.clicked}
-                setCharacters={setCharactersState}
+                updateCharacter={updateCharacter}
                 incrementScore={incrementScore}
                 setGameState={setGameState}
                 flipping={flipping}

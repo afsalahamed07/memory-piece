@@ -3,14 +3,13 @@ import { motion } from "framer-motion";
 import React from "react";
 import clickSound from "../../assets/click.wav";
 import flipSound from "../../assets/flip.mp3";
-import { Character } from "../../Character";
 
 type CardProps = {
-  id: string;
+  id: number;
   name: string;
   img: string;
   clicked: boolean;
-  setCharacters: (callback: (prev: Character[]) => Character[]) => void;
+  updateCharacter: (id: number) => void;
   incrementScore: () => void;
   setGameState: (state: "lost" | "active" | "won") => void;
   flipping: boolean;
@@ -22,7 +21,7 @@ const Card: React.FC<CardProps> = ({
   name,
   img,
   clicked,
-  setCharacters,
+  updateCharacter,
   incrementScore,
   setGameState,
   flipping,
@@ -50,11 +49,7 @@ const Card: React.FC<CardProps> = ({
       if (!clicked) {
         incrementScore();
       }
-      setCharacters((prev) =>
-        prev.map((character) =>
-          character.id === id ? { ...character, clicked: true } : character,
-        ),
-      );
+      updateCharacter(id);
     }, 800);
   }
 
