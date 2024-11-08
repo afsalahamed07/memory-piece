@@ -23,8 +23,8 @@
 }
 
 body {
-    @apply bg-[url('./assets/hero.gif')] bg-contain
-    bg-black/50 bg-blend-overlay;
+    @apply bg-[url('./assets/back-image.jpg')] bg-cover
+    bg-black/60 bg-blend-overlay;
 }
 
 .card {

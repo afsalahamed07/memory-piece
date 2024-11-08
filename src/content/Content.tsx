@@ -20,7 +20,6 @@ type ContentProps = {
 };
 
 const Content: React.FC<ContentProps> = ({ score, setScore }) => {
-  console.log("yoyo");
   const [gameState, setGameState] = useState<"lost" | "won" | "active">(
     "active",
   );
@@ -44,11 +43,9 @@ const Content: React.FC<ContentProps> = ({ score, setScore }) => {
   }
 
   useEffect(() => {
-    console.log("starting");
     setLoading(true);
     const initilise = async () => {
       const characters: Character[] = await initializeCharacters(charactersObj);
-      console.log(characters);
       setCharactersState(characters);
       setLoading(false);
     };
